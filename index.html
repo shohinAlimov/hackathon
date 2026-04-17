@@ -802,15 +802,14 @@
 
       /* CAMERA MODAL */
       .cam-overlay {
-        display: none;
         position: fixed;
         inset: 0;
-        z-index: 999;
-        background: rgba(0, 0, 0, 0.82);
-        backdrop-filter: blur(8px);
-        align-items: center;
+        background: black;
+        display: none;
+        flex-direction: column;
         justify-content: center;
-        padding: 1rem;
+        align-items: center;
+        z-index: 9999;
       }
       .cam-overlay.open {
         display: flex;
@@ -1990,6 +1989,23 @@
         </div>
 
         <div class="cam-btns">
+          <!-- Mobile: native camera trigger -->
+          <label
+            class="cam-btn open-cam"
+            id="btnMobileCam"
+            style="cursor: pointer; display: none"
+          >
+            📷 Take Photo
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              style="display: none"
+              id="mobileCamInput"
+              onchange="handleFileUpload(event)"
+            />
+          </label>
+          <!-- Desktop: getUserMedia -->
           <button
             class="cam-btn open-cam"
             id="btnOpenCam"
@@ -2012,7 +2028,6 @@
             <input
               type="file"
               accept="image/*"
-              capture="environment"
               style="display: none"
               id="photoFileInput"
               onchange="handleFileUpload(event)"
@@ -2252,6 +2267,11 @@
       let pendingCard = null;
       let photoReady = false;
 
+      // Detect mobile device
+      const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(
+        navigator.userAgent,
+      );
+
       function openCamera(pts, label, emoji, card) {
         pendingPts = pts;
         pendingLabel = label;
@@ -2264,11 +2284,10 @@
         document.getElementById("camOverlay").classList.add("open");
         resetCameraUI();
 
-        // 🚀 AUTO OPEN CAMERA IMMEDIATELY
-        startCamera();
-
-        // hide button (optional)
-        document.getElementById("btnOpenCam").style.display = "none";
+        // On mobile: auto-trigger native camera immediately
+        if (isMobile) {
+          document.getElementById("mobileCamInput").click();
+        }
       }
 
       function resetCameraUI() {
@@ -2282,11 +2301,21 @@
         document.getElementById("camCanvas").style.display = "none";
         document.getElementById("photoPreviewImg").style.display = "none";
         document.getElementById("photoPreviewImg").src = "";
-        document.getElementById("btnOpenCam").style.display = "";
         document.getElementById("btnCapture").style.display = "none";
         document.getElementById("btnRetake").style.display = "none";
         document.getElementById("camSubmit").classList.remove("visible");
         document.getElementById("photoFileInput").value = "";
+        document.getElementById("mobileCamInput").value = "";
+
+        if (isMobile) {
+          // Mobile: show native camera button, hide desktop camera button
+          document.getElementById("btnMobileCam").style.display = "";
+          document.getElementById("btnOpenCam").style.display = "none";
+        } else {
+          // Desktop: show getUserMedia button, hide mobile button
+          document.getElementById("btnMobileCam").style.display = "none";
+          document.getElementById("btnOpenCam").style.display = "";
+        }
       }
 
       function closeCamera() {
