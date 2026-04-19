@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoCity Builders — Build a Green City Through Real Actions</title>
+    <title>EcoCycle — Earn Rides. Save the City.</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -101,9 +101,7 @@
         font-size: 0.9rem;
         font-weight: 500;
         cursor: pointer;
-        transition:
-          background 0.2s,
-          transform 0.15s;
+        transition: background 0.2s, transform 0.15s;
         text-decoration: none;
       }
       .nav-cta:hover {
@@ -196,9 +194,7 @@
         font-size: 1rem;
         font-weight: 500;
         cursor: pointer;
-        transition:
-          background 0.2s,
-          transform 0.15s;
+        transition: background 0.2s, transform 0.15s;
         text-decoration: none;
         display: inline-block;
       }
@@ -393,7 +389,7 @@
         padding: 1rem 2rem;
         text-align: center;
         margin: 2rem auto;
-        max-width: 360px;
+        max-width: 440px;
       }
       .points-num {
         font-family: "Syne", sans-serif;
@@ -405,84 +401,53 @@
       .points-num.pop {
         transform: scale(1.2);
       }
-      .city-grid {
+
+      /* BIKE RIDES GRID */
+      .bike-grid {
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        gap: 8px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 12px;
-        padding: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
         margin-top: 1.5rem;
-        min-height: 160px;
       }
-      .city-cell {
-        aspect-ratio: 1;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 0.5px solid rgba(255, 255, 255, 0.05);
+      .bike-card {
+        background: rgba(0,0,0,0.25);
+        border-radius: 14px;
+        padding: 1.25rem;
+        border: 0.5px solid rgba(255,255,255,0.06);
         transition: all 0.3s;
+        text-align: center;
       }
-      .city-cell.unlocked {
-        background: rgba(93, 181, 42, 0.12);
-        border-color: var(--border);
+      .bike-card.unlocked {
+        background: rgba(93, 181, 42, 0.1);
+        border-color: var(--border2);
+        cursor: pointer;
+      }
+      .bike-card.unlocked:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .bike-card.locked {
+        opacity: 0.45;
+      }
+      .bike-card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .bike-card h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+      .bike-card .cost {
+        font-size: 0.78rem;
+        color: var(--accent2);
+      }
+      .bike-card .lock-label {
+        font-size: 0.72rem;
+        color: var(--text3);
+        margin-top: 0.25rem;
       }
 
-      /* LEADERBOARD */
-      .leaderboard {
-        margin-top: 2rem;
-      }
-      .lb-row {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 1.5rem;
-        background: var(--card);
-        border-radius: 12px;
-        margin-bottom: 0.75rem;
-        border: 0.5px solid var(--border);
-        transition: all 0.2s;
-      }
-      .lb-row.top {
-        border-color: var(--gold);
-        background: rgba(240, 192, 80, 0.06);
-      }
-      .lb-rank {
-        font-family: "Syne", sans-serif;
-        font-size: 1.4rem;
-        font-weight: 700;
-        width: 32px;
-        color: var(--text3);
-      }
-      .lb-rank.gold {
-        color: var(--gold);
-      }
-      .lb-team {
-        flex: 1;
-        font-weight: 500;
-      }
-      .lb-pts {
-        font-family: "Syne", sans-serif;
-        font-size: 1.1rem;
-        color: var(--accent2);
-        font-weight: 600;
-      }
-      .lb-bar {
-        flex: 2;
-        height: 6px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 999px;
-        overflow: hidden;
-      }
-      .lb-fill {
-        height: 100%;
-        background: var(--accent);
-        border-radius: 999px;
-        transition: width 0.5s;
-      }
+
 
       /* TEAM */
       .team-grid {
@@ -770,21 +735,11 @@
         background: var(--text3);
         animation: blink 1.2s infinite;
       }
-      .typing span:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .typing span:nth-child(3) {
-        animation-delay: 0.4s;
-      }
+      .typing span:nth-child(2) { animation-delay: 0.2s; }
+      .typing span:nth-child(3) { animation-delay: 0.4s; }
       @keyframes blink {
-        0%,
-        80%,
-        100% {
-          opacity: 0.3;
-        }
-        40% {
-          opacity: 1;
-        }
+        0%, 80%, 100% { opacity: 0.3; }
+        40% { opacity: 1; }
       }
 
       /* SEPARATOR */
@@ -835,9 +790,7 @@
         cursor: pointer;
         line-height: 1;
       }
-      .cam-close:hover {
-        color: var(--text);
-      }
+      .cam-close:hover { color: var(--text); }
       .cam-title {
         font-family: "Syne", sans-serif;
         font-size: 1.3rem;
@@ -862,17 +815,13 @@
         justify-content: center;
         margin-bottom: 1.25rem;
       }
-      #camVideo,
-      #camCanvas,
-      #photoPreviewImg {
+      #camVideo, #camCanvas, #photoPreviewImg {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 14px;
       }
-      #camCanvas {
-        display: none;
-      }
+      #camCanvas { display: none; }
       #photoPreviewImg {
         display: none;
         position: absolute;
@@ -887,9 +836,7 @@
         font-size: 3rem;
         margin-bottom: 0.5rem;
       }
-      .cam-placeholder p {
-        font-size: 0.85rem;
-      }
+      .cam-placeholder p { font-size: 0.85rem; }
       .cam-btns {
         display: flex;
         gap: 0.75rem;
@@ -898,54 +845,35 @@
       .cam-btn {
         flex: 1;
         min-width: 120px;
-        padding: 0.75rem 1rem;
+        padding: 0.7rem 1rem;
         border-radius: 999px;
-        border: none;
-        cursor: pointer;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.2s;
-      }
-      .cam-btn.open-cam {
-        background: var(--accent);
-        color: #fff;
-      }
-      .cam-btn.open-cam:hover {
-        background: var(--accent2);
-      }
-      .cam-btn.capture {
-        background: var(--teal-400);
-        color: #fff;
-        display: none;
-      }
-      .cam-btn.capture:hover {
-        background: var(--teal-600);
-      }
-      .cam-btn.upload {
-        background: transparent;
-        color: var(--accent2);
         border: 1px solid var(--border2);
-      }
-      .cam-btn.upload:hover {
-        background: rgba(93, 181, 42, 0.1);
-      }
-      .cam-btn.retake {
-        background: transparent;
+        background: var(--bg2);
         color: var(--text2);
-        border: 1px solid var(--border);
-        display: none;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.88rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
       }
-      .cam-btn.retake:hover {
-        background: rgba(255, 255, 255, 0.05);
+      .cam-btn:hover {
+        background: rgba(93,181,42,0.12);
+        border-color: var(--accent);
+        color: var(--accent2);
+      }
+      .cam-btn.capture, .cam-btn.open-cam {
+        background: rgba(93,181,42,0.15);
+        border-color: var(--accent);
+        color: var(--accent2);
+        font-weight: 600;
+        font-size: 1rem;
       }
       .cam-submit {
         width: 100%;
-        margin-top: 1rem;
-        padding: 0.9rem;
+        margin-top: 1.25rem;
+        padding: 0.95rem;
         border-radius: 999px;
         border: none;
-        cursor: pointer;
         font-family: "DM Sans", sans-serif;
         font-size: 1rem;
         font-weight: 600;
@@ -959,9 +887,7 @@
         background: var(--accent2);
         transform: scale(1.02);
       }
-      .cam-submit.visible {
-        display: block;
-      }
+      .cam-submit.visible { display: block; }
       .cam-action-badge {
         display: inline-flex;
         align-items: center;
@@ -986,9 +912,7 @@
         background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(6px);
       }
-      .reward-popup.open {
-        display: flex;
-      }
+      .reward-popup.open { display: flex; }
       .reward-box {
         background: var(--card);
         border: 1px solid var(--accent);
@@ -1001,14 +925,8 @@
         animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       @keyframes popIn {
-        from {
-          transform: scale(0.6);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
+        from { transform: scale(0.6); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
       }
       .reward-emoji {
         font-size: 4rem;
@@ -1016,12 +934,8 @@
         animation: spin 0.6s ease;
       }
       @keyframes spin {
-        from {
-          transform: rotate(-20deg) scale(0.8);
-        }
-        to {
-          transform: rotate(0deg) scale(1);
-        }
+        from { transform: rotate(-20deg) scale(0.8); }
+        to { transform: rotate(0deg) scale(1); }
       }
       .reward-title {
         font-family: "Syne", sans-serif;
@@ -1054,11 +968,33 @@
         cursor: pointer;
         transition: background 0.2s;
       }
-      .reward-close:hover {
-        background: var(--accent2);
+      .reward-close:hover { background: var(--accent2); }
+
+      /* Ride booking modal */
+      .ride-popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+      }
+      .ride-popup.open { display: flex; }
+      .ride-box {
+        background: var(--card);
+        border: 1px solid var(--accent);
+        border-radius: 24px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 0 80px rgba(93, 181, 42, 0.25);
+        animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
-      /* Action card verified badge */
+      /* Action card cam trigger */
       .verified-badge {
         display: inline-block;
         font-size: 0.7rem;
@@ -1092,47 +1028,39 @@
   <body>
     <!-- NAV -->
     <nav>
-      <div class="nav-logo">🌱 Eco<span>City</span></div>
+      <div class="nav-logo">🚲 Eco<span>Cycle</span></div>
       <ul class="nav-links">
         <li><a href="#problem">Problem</a></li>
         <li><a href="#team">Team</a></li>
-        <li><a href="#game">Play</a></li>
+        <li><a href="#game">Earn & Ride</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#chatbot-section">AI Chat</a></li>
         <li><a href="./demo.html">Demo</a></li>
       </ul>
-      <a href="#game" class="nav-cta">Join the Game</a>
+      <a href="#game" class="nav-cta">Start Earning</a>
     </nav>
 
     <!-- HERO -->
     <div id="home" style="padding: 0; max-width: 100%; position: relative">
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
-      <div
-        class="hero-content"
-        style="text-align: center; padding: 8rem 2rem 4rem"
-      >
-        <div class="hero-badge">🏆 Gamified Sustainability Platform</div>
-        <h1>Build a <em>Green City</em><br />Through Real Actions</h1>
+      <div class="hero-content" style="text-align: center; padding: 8rem 2rem 4rem">
+        <div class="hero-badge">🚲 Sustainable Transportation Platform</div>
+        <h1>Do Good. <em>Ride Free.</em><br />Change the City.</h1>
         <p class="hero-sub">
-          Earn EcoPoints for real-life environmental actions. Join teams. Watch
-          your city grow as the planet gets better.
+          Earn EcoPoints by completing real eco-actions — recycling, cleaning up, reducing plastic. 
+          Spend them on real bicycle rides across the city.
         </p>
         <div class="hero-btns">
-          <a href="#game" class="btn-primary">🌿 Join the Game</a>
+          <a href="#game" class="btn-primary">♻️ Earn Your First Ride</a>
           <a href="demo.html" class="btn-outline">▶ View Demo</a>
         </div>
         <div
           class="stats-row"
-          style="
-            max-width: 700px;
-            margin: 3rem auto 0;
-            border-top: 0.5px solid var(--border);
-            padding-top: 2rem;
-          "
+          style="max-width: 700px; margin: 3rem auto 0; border-top: 0.5px solid var(--border); padding-top: 2rem;"
         >
           <div class="stat">
-            <div class="stat-num">2,400+</div>
+            <div class="stat-num">1,840+</div>
             <div class="stat-lbl">Eco Actions</div>
           </div>
           <div class="stat">
@@ -1140,12 +1068,12 @@
             <div class="stat-lbl">Teams</div>
           </div>
           <div class="stat">
-            <div class="stat-num">48K</div>
+            <div class="stat-num">38K</div>
             <div class="stat-lbl">EcoPoints Earned</div>
           </div>
           <div class="stat">
-            <div class="stat-num">6</div>
-            <div class="stat-lbl">Buildings Unlocked</div>
+            <div class="stat-num">320</div>
+            <div class="stat-lbl">Bike Rides Unlocked</div>
           </div>
         </div>
       </div>
@@ -1156,70 +1084,46 @@
     <!-- PROBLEM → SOLUTION -->
     <section id="problem">
       <div class="section-tag">01 — Problem & Solution</div>
-      <h2>The world's biggest challenge<br />needs everyday heroes</h2>
+      <h2>Two problems.<br />One elegant solution.</h2>
       <div class="ps-grid">
         <div class="ps-card problem">
           <div class="ps-icon">⚠️</div>
-          <h3 style="color: #f09595">The Problem</h3>
+          <h3 style="color: #f09595">The Problems</h3>
           <div class="ps-item">
             <div class="ps-dot red"></div>
-            <p>
-              People want to help the environment but lack motivation and
-              direction
-            </p>
+            <p>City streets are polluted — plastic waste, litter, and poor recycling habits damage public health</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot red"></div>
-            <p>
-              Environmental campaigns feel abstract — no immediate feedback or
-              reward
-            </p>
+            <p>Urban transport is heavily car-dependent — adding to emissions and traffic congestion</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot red"></div>
-            <p>
-              Individual actions feel insignificant without visible community
-              impact
-            </p>
+            <p>People want to take eco-action but lack tangible, immediate incentive to do so</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot red"></div>
-            <p>
-              No gamified platform connects real-world eco actions to visible
-              progress
-            </p>
+            <p>Bike-sharing systems exist but adoption remains low without compelling on-ramps</p>
           </div>
         </div>
         <div class="ps-card solution">
-          <div class="ps-icon">🌱</div>
+          <div class="ps-icon">🚲</div>
           <h3 style="color: var(--accent2)">Our Solution</h3>
           <div class="ps-item">
             <div class="ps-dot green"></div>
-            <p>
-              Earn EcoPoints for verified real-life actions (recycling,
-              planting, saving water)
-            </p>
+            <p>Earn EcoPoints by completing verified eco-actions — recycling, cleaning up, reducing plastic</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot green"></div>
-            <p>
-              Points unlock buildings in a shared virtual city — making impact
-              visible
-            </p>
+            <p>EcoPoints are real currency — spend them to unlock and pay for bicycle rides across the city</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot green"></div>
-            <p>
-              Team competition drives collective motivation and social
-              accountability
-            </p>
+            <p>Photo proof + AI verification ensures every action is genuine, not gamed</p>
           </div>
           <div class="ps-item">
             <div class="ps-dot green"></div>
-            <p>
-              Leaderboards, streaks, and achievements keep engagement high
-              long-term
-            </p>
+            <p>Team competitions and leaderboards drive communities to collectively improve their neighborhoods</p>
           </div>
         </div>
       </div>
@@ -1227,82 +1131,52 @@
 
     <div class="sep"></div>
 
-    <!-- GAME SECTION -->
-    <div style="padding: 4rem 0" id="game">
-      <div class="game-section" style="max-width: 1060px; margin: 0 auto">
-        <div style="text-align: center; margin-bottom: 2rem">
-          <div class="section-tag">🎮 Live Prototype</div>
-          <h2>Play the EcoCity Game</h2>
-          <p style="color: var(--text2); margin-top: 0.5rem">
-            Click actions to earn EcoPoints and watch your city grow!
-          </p>
-        </div>
+    <!-- GAME / INTERACTIVE PROTOTYPE -->
+    <div id="game" style="padding: 5rem 0; max-width: 1100px; margin: 0 auto;">
+      <div style="padding: 0 2rem; margin-bottom: 2rem;">
+        <div class="section-tag">🎮 Live Prototype</div>
+        <h2>Earn EcoPoints.<br />Unlock Real Rides.</h2>
+        <p style="color: var(--text2); max-width: 580px; font-size: 0.95rem; margin-top: 0.5rem;">
+          Complete eco-actions below to earn EcoPoints. Use those points to unlock and redeem actual bicycle rides at stations across the city.
+        </p>
+      </div>
 
+      <div class="game-section">
         <!-- Points Display -->
         <div class="points-display">
-          <div
-            style="
-              font-size: 0.85rem;
-              color: var(--text3);
-              margin-bottom: 0.25rem;
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-            "
-          >
-            Your EcoPoints
-          </div>
+          <div style="font-size: 0.85rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Your EcoPoints Balance</div>
           <div class="points-num" id="pointsNum">0</div>
-          <div
-            style="font-size: 0.8rem; color: var(--text2); margin-top: 0.5rem"
-          >
-            Next unlock:
-            <span id="nextUnlock" style="color: var(--gold)"
-              >🌳 Tree at 50 pts</span
-            >
+          <div style="font-size: 0.8rem; color: var(--text3); margin-top: 0.25rem;">
+            Next ride unlocks at: <span id="nextUnlock" style="color: var(--accent2)">🚲 Short Ride at 30 pts</span>
           </div>
         </div>
 
-        <!-- Actions -->
-        <div style="text-align: center; margin-bottom: 0.75rem">
-          <span style="font-size: 0.82rem; color: var(--text3)"
-            >📸 Each action requires a photo proof — earn your EcoPoints after
-            submitting!</span
-          >
-        </div>
+        <!-- Eco Actions -->
+        <h3 style="margin-bottom: 0.5rem;">♻️ Earn EcoPoints — Complete Real Actions</h3>
+        <p style="font-size: 0.85rem; color: var(--text3); margin-bottom: 1.25rem;">Upload a photo as proof of each eco-action. AI verifies and awards your points instantly.</p>
+
         <div class="actions-grid">
           <div class="action-card">
             <div class="action-emoji">♻️</div>
             <h4>Recycle Plastic</h4>
             <div class="pts">+15 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  15,
-                  '♻️ Recycle Plastic',
-                  '♻️',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(15,'♻️ Recycle Plastic','♻️',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
           <div class="action-card">
             <div class="action-emoji">🧹</div>
-            <h4>Clean Environment</h4>
+            <h4>Clean Up Litter</h4>
             <div class="pts">+20 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  20,
-                  '🧹 Clean Environment',
-                  '🧹',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(20,'🧹 Clean Up Litter','🧹',this.closest('.action-card'))">
+              📸 Verify with Photo
+            </button>
+          </div>
+          <div class="action-card">
+            <div class="action-emoji">🛍️</div>
+            <h4>No Plastic Bags</h4>
+            <div class="pts">+10 EcoPoints</div>
+            <button class="cam-trigger-btn" onclick="openCamera(10,'🛍️ No Plastic Bags','🛍️',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
@@ -1310,146 +1184,54 @@
             <div class="action-emoji">💧</div>
             <h4>Save Water</h4>
             <div class="pts">+10 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  10,
-                  '💧 Save Water',
-                  '💧',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(10,'💧 Save Water','💧',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
           <div class="action-card">
-            <div class="action-emoji">🌳</div>
-            <h4>Plant a Tree</h4>
+            <div class="action-emoji">🌿</div>
+            <h4>Plant a Seedling</h4>
             <div class="pts">+25 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  25,
-                  '🌳 Plant a Tree',
-                  '🌳',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(25,'🌿 Plant a Seedling','🌿',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
           <div class="action-card">
-            <div class="action-emoji">🚲</div>
-            <h4>Use Bicycle</h4>
+            <div class="action-emoji">🗑️</div>
+            <h4>Sort Waste Bins</h4>
             <div class="pts">+12 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  12,
-                  '🚲 Use Bicycle',
-                  '🚲',
-                  this.closest('.action-card'),
-                )
-              "
-            >
-              📸 Verify with Photo
-            </button>
-          </div>
-          <div class="action-card">
-            <div class="action-emoji">🛍️</div>
-            <h4>No Plastic Bags</h4>
-            <div class="pts">+8 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  8,
-                  '🛍️ No Plastic Bags',
-                  '🛍️',
-                  this.closest('.action-card'),
-                )
-              "
-            >
-              📸 Verify with Photo
-            </button>
-          </div>
-          <div class="action-card">
-            <div class="action-emoji">☀️</div>
-            <h4>Use Solar Energy</h4>
-            <div class="pts">+18 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  18,
-                  '☀️ Use Solar Energy',
-                  '☀️',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(12,'🗑️ Sort Waste Bins','🗑️',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
           <div class="action-card">
             <div class="action-emoji">🌊</div>
-            <h4>Beach Cleanup</h4>
+            <h4>Waterway Cleanup</h4>
             <div class="pts">+30 EcoPoints</div>
-            <button
-              class="cam-trigger-btn"
-              onclick="
-                openCamera(
-                  30,
-                  '🌊 Beach Cleanup',
-                  '🌊',
-                  this.closest('.action-card'),
-                )
-              "
-            >
+            <button class="cam-trigger-btn" onclick="openCamera(30,'🌊 Waterway Cleanup','🌊',this.closest('.action-card'))">
+              📸 Verify with Photo
+            </button>
+          </div>
+          <div class="action-card">
+            <div class="action-emoji">🔋</div>
+            <h4>Recycle Electronics</h4>
+            <div class="pts">+20 EcoPoints</div>
+            <button class="cam-trigger-btn" onclick="openCamera(20,'🔋 Recycle Electronics','🔋',this.closest('.action-card'))">
               📸 Verify with Photo
             </button>
           </div>
         </div>
 
-        <!-- City Grid -->
+        <!-- Bike Rides Unlock Panel -->
         <div style="margin-top: 2.5rem">
-          <h3 style="margin-bottom: 0.5rem">🏙️ Your EcoCity</h3>
-          <div
-            style="font-size: 0.85rem; color: var(--text3); margin-bottom: 1rem"
-          >
-            Buildings unlock as your team earns more points
+          <h3 style="margin-bottom: 0.5rem;">🚲 Unlock Real Bike Rides</h3>
+          <div style="font-size: 0.85rem; color: var(--text3); margin-bottom: 1rem;">
+            EcoPoints = ride currency. Earn enough and book a real bicycle at any partner station across the city.
           </div>
-          <div class="city-grid" id="cityGrid"></div>
-          <div
-            style="display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap"
-          >
-            <div style="font-size: 0.8rem; color: var(--text3)">
-              🌳 50pts = Tree &nbsp; 🌿 100pts = Park &nbsp; 🏠 200pts = Eco
-              Building &nbsp; 🏛️ 350pts = City Hall &nbsp; ⚡ 500pts = Solar
-              Plant
-            </div>
-          </div>
+          <div class="bike-grid" id="bikeGrid"></div>
         </div>
 
-        <!-- Leaderboard -->
-        <div style="margin-top: 3rem">
-          <h3 style="margin-bottom: 0.25rem">🏆 Team Leaderboard</h3>
-          <p
-            style="
-              font-size: 0.85rem;
-              color: var(--text3);
-              margin-bottom: 1.25rem;
-            "
-          >
-            Live rankings — your team's actions count!
-          </p>
-          <div class="leaderboard" id="leaderboard"></div>
-        </div>
+
       </div>
     </div>
 
@@ -1458,153 +1240,60 @@
     <!-- TEAM -->
     <section id="team">
       <div class="section-tag">02 — Our Team</div>
-      <h2>The people building<br />EcoCity Builders</h2>
+      <h2>The people building<br />EcoCycle</h2>
       <div class="team-grid">
         <div class="team-card">
-          <div
-            class="team-avatar"
-            style="background: rgba(93, 181, 42, 0.2); color: var(--accent2)"
-          >
-            KN
-          </div>
+          <div class="team-avatar" style="background: rgba(93, 181, 42, 0.2); color: var(--accent2)">KN</div>
           <h3>Kunte N.</h3>
-          <div
-            style="
-              font-size: 0.8rem;
-              color: var(--text3);
-              margin-bottom: 0.75rem;
-            "
-          >
-            Lead Developer & Designer
-          </div>
+          <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.75rem;">Lead Developer & Designer</div>
           <div class="tech-tags">
-            <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span
-            ><span class="tag">Wix</span><span class="tag">UI/UX</span>
+            <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Wix</span><span class="tag">UI/UX</span>
           </div>
-          <p>
-            WIUT Foundation student, competitive Taekwondo athlete, freelance
-            graphic designer.
-          </p>
+          <p>WIUT Foundation student, competitive Taekwondo athlete, freelance graphic designer.</p>
         </div>
         <div class="team-card">
-          <div
-            class="team-avatar"
-            style="background: rgba(29, 158, 117, 0.2); color: #5dcaa5"
-          >
-            AM
-          </div>
+          <div class="team-avatar" style="background: rgba(29, 158, 117, 0.2); color: #5dcaa5">AM</div>
           <h3>Team Member 2</h3>
-          <div
-            style="
-              font-size: 0.8rem;
-              color: var(--text3);
-              margin-bottom: 0.75rem;
-            "
-          >
-            Backend & AI Integration
-          </div>
+          <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.75rem;">Backend & AI Integration</div>
           <div class="tech-tags">
-            <span class="tag">Python</span><span class="tag">Node.js</span
-            ><span class="tag">API</span><span class="tag">AI/ML</span>
+            <span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">API</span><span class="tag">AI/ML</span>
           </div>
-          <p>
-            Passionate about sustainable tech solutions and data engineering.
-          </p>
+          <p>Passionate about sustainable tech solutions and data engineering.</p>
         </div>
         <div class="team-card">
-          <div
-            class="team-avatar"
-            style="background: rgba(240, 192, 80, 0.2); color: var(--gold)"
-          >
-            BT
-          </div>
+          <div class="team-avatar" style="background: rgba(240, 192, 80, 0.2); color: var(--gold)">BT</div>
           <h3>Team Member 3</h3>
-          <div
-            style="
-              font-size: 0.8rem;
-              color: var(--text3);
-              margin-bottom: 0.75rem;
-            "
-          >
-            Marketing & Growth
-          </div>
+          <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.75rem;">Marketing & Growth</div>
           <div class="tech-tags">
-            <span class="tag">Strategy</span
-            ><span class="tag">Social Media</span
-            ><span class="tag">Analytics</span>
+            <span class="tag">Strategy</span><span class="tag">Social Media</span><span class="tag">Analytics</span>
           </div>
-          <p>
-            Growth hacker with a background in community engagement and
-            sustainability campaigns.
-          </p>
+          <p>Growth hacker with a background in community engagement and sustainability campaigns.</p>
         </div>
         <div class="team-card">
-          <div
-            class="team-avatar"
-            style="background: rgba(215, 90, 48, 0.2); color: #f09595"
-          >
-            SR
-          </div>
+          <div class="team-avatar" style="background: rgba(215, 90, 48, 0.2); color: #f09595">SR</div>
           <h3>Team Member 4</h3>
-          <div
-            style="
-              font-size: 0.8rem;
-              color: var(--text3);
-              margin-bottom: 0.75rem;
-            "
-          >
-            Product & Research
-          </div>
+          <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.75rem;">Product & Research</div>
           <div class="tech-tags">
-            <span class="tag">Research</span><span class="tag">Figma</span
-            ><span class="tag">UX</span><span class="tag">Testing</span>
+            <span class="tag">Research</span><span class="tag">Figma</span><span class="tag">UX</span><span class="tag">Testing</span>
           </div>
-          <p>
-            User research specialist focused on gamification psychology and
-            behavioral change.
-          </p>
+          <p>User research specialist focused on gamification psychology and behavioral change.</p>
         </div>
       </div>
 
       <!-- Tech Stack -->
-      <div
-        style="
-          margin-top: 3rem;
-          background: var(--card);
-          border-radius: 16px;
-          border: 0.5px solid var(--border);
-          padding: 2rem;
-        "
-      >
+      <div style="margin-top: 3rem; background: var(--card); border-radius: 16px; border: 0.5px solid var(--border); padding: 2rem;">
         <h3 style="margin-bottom: 1.25rem">⚙️ Technology Stack</h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >React.js</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Node.js</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >MongoDB</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Claude AI API</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Vercel</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Figma</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Firebase Auth</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Socket.io</span
-          >
-          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem"
-            >Chart.js</span
-          >
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">React.js</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Node.js</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">MongoDB</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Claude AI API</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Vercel</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Figma</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Firebase Auth</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Socket.io</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">QR Code API</span>
+          <span class="tag" style="font-size: 0.85rem; padding: 0.35rem 0.9rem">Maps API</span>
         </div>
       </div>
     </section>
@@ -1619,50 +1308,32 @@
         <div class="why-card">
           <div class="why-icon">🎮</div>
           <h4>Gamification Expertise</h4>
-          <p>
-            We understand how game mechanics drive behavior change — combining
-            Duolingo-style streaks with city-building progression.
-          </p>
+          <p>We understand how game mechanics drive behavior change — combining tangible rewards with community competition to make eco-action addictive.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">🌍</div>
           <h4>Local Impact, Global Vision</h4>
-          <p>
-            Based in Tashkent — we see the environmental challenges firsthand
-            and design for real Central Asian communities.
-          </p>
+          <p>Based in Tashkent — we see the transportation and pollution challenges firsthand and design for real Central Asian cities.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">🤝</div>
           <h4>Community Builders</h4>
-          <p>
-            Our team has organized community events, sports competitions, and
-            volunteer programs — we know how to activate people.
-          </p>
+          <p>Our team has organized community events, sports competitions, and volunteer programs — we know how to activate people.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">🧠</div>
           <h4>Interdisciplinary Skills</h4>
-          <p>
-            From economics to web dev to graphic design — our diverse skill set
-            covers every dimension of product building.
-          </p>
+          <p>From economics to web dev to graphic design — our diverse skill set covers every dimension of product building.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">⚡</div>
           <h4>AI-First Approach</h4>
-          <p>
-            We integrate Claude AI for intelligent action verification,
-            personalized challenges, and smart city growth algorithms.
-          </p>
+          <p>We integrate Claude AI for intelligent photo verification of eco-actions, personalized challenges, and smart anti-fraud detection.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">📈</div>
-          <h4>Evidence-Based Design</h4>
-          <p>
-            Built on behavioral economics research — our reward system aligns
-            intrinsic motivation with visible environmental outcomes.
-          </p>
+          <h4>Real Reward, Real Impact</h4>
+          <p>Unlike virtual badges, we give users something they actually use — free bike rides. That's a compelling loop that drives sustained behavior change.</p>
         </div>
       </div>
     </section>
@@ -1687,113 +1358,30 @@
         <div class="rm-step">
           <div class="rm-circle">🚀</div>
           <div class="rm-label">MVP</div>
-          <div class="rm-desc">Full app with auth & teams</div>
+          <div class="rm-desc">Real bike stations + auth</div>
         </div>
         <div class="rm-step">
           <div class="rm-circle">🌐</div>
           <div class="rm-label">Launched</div>
-          <div class="rm-desc">Public launch with partners</div>
+          <div class="rm-desc">City-wide partner network</div>
         </div>
       </div>
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-          gap: 1rem;
-          margin-top: 2.5rem;
-        "
-      >
-        <div
-          style="
-            background: var(--card);
-            border: 0.5px solid var(--accent);
-            border-radius: 12px;
-            padding: 1.25rem;
-          "
-        >
-          <div
-            style="
-              font-size: 0.75rem;
-              color: var(--accent2);
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-              margin-bottom: 0.5rem;
-            "
-          >
-            ✓ Completed
-          </div>
-          <div style="font-size: 0.9rem; color: var(--text2)">
-            Market research, user interviews, game design doc, wireframes
-          </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 2.5rem;">
+        <div style="background: var(--card); border: 0.5px solid var(--accent); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">✓ Completed</div>
+          <div style="font-size: 0.9rem; color: var(--text2)">Market research, user interviews, system design, wireframes</div>
         </div>
-        <div
-          style="
-            background: var(--card);
-            border: 0.5px solid var(--gold);
-            border-radius: 12px;
-            padding: 1.25rem;
-          "
-        >
-          <div
-            style="
-              font-size: 0.75rem;
-              color: var(--gold);
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-              margin-bottom: 0.5rem;
-            "
-          >
-            🔨 Current — April 2026
-          </div>
-          <div style="font-size: 0.9rem; color: var(--text2)">
-            HTML/CSS prototype, game mechanics, AI chatbot integration
-          </div>
+        <div style="background: var(--card); border: 0.5px solid var(--gold); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">🔨 Current — April 2026</div>
+          <div style="font-size: 0.9rem; color: var(--text2)">HTML/CSS prototype, eco-action system, bike ride unlock mechanics, AI chatbot</div>
         </div>
-        <div
-          style="
-            background: var(--card);
-            border: 0.5px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-          "
-        >
-          <div
-            style="
-              font-size: 0.75rem;
-              color: var(--text3);
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-              margin-bottom: 0.5rem;
-            "
-          >
-            🚀 Q3 2026
-          </div>
-          <div style="font-size: 0.9rem; color: var(--text2)">
-            React app, Firebase auth, real teams, verified eco actions
-          </div>
+        <div style="background: var(--card); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">🚀 Q3 2026</div>
+          <div style="font-size: 0.9rem; color: var(--text2)">React app, Firebase auth, QR ride unlock, first 3 partner bike stations in Tashkent</div>
         </div>
-        <div
-          style="
-            background: var(--card);
-            border: 0.5px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-          "
-        >
-          <div
-            style="
-              font-size: 0.75rem;
-              color: var(--text3);
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-              margin-bottom: 0.5rem;
-            "
-          >
-            🌐 Q4 2026
-          </div>
-          <div style="font-size: 0.9rem; color: var(--text2)">
-            School partnerships, NGO integration, mobile app launch
-          </div>
+        <div style="background: var(--card); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-size: 0.75rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">🌐 Q4 2026</div>
+          <div style="font-size: 0.9rem; color: var(--text2)">City-wide rollout, school partnerships, municipal integration, mobile app launch</div>
         </div>
       </div>
     </section>
@@ -1808,74 +1396,49 @@
         <div class="tech-card">
           <div class="step-num">1</div>
           <h3>Foundation</h3>
-          <p>
-            Set up React frontend with Tailwind CSS. Deploy on Vercel. Implement
-            routing, responsive layout, and design system.
-          </p>
+          <p>Set up React frontend with Tailwind CSS. Deploy on Vercel. Implement user auth, team system, and responsive design.</p>
           <div class="tech-tags">
-            <span class="tag">React</span><span class="tag">Vercel</span
-            ><span class="tag">Tailwind</span>
+            <span class="tag">React</span><span class="tag">Vercel</span><span class="tag">Tailwind</span>
           </div>
         </div>
         <div class="tech-card">
           <div class="step-num">2</div>
-          <h3>Game Engine</h3>
-          <p>
-            Build points system, city-building logic, action verification,
-            streak tracking, and real-time team leaderboards.
-          </p>
+          <h3>Eco-Action Engine</h3>
+          <p>Build photo upload pipeline with Claude AI vision API to verify eco-actions and award EcoPoints. Include anti-fraud duplicate detection.</p>
           <div class="tech-tags">
-            <span class="tag">Socket.io</span><span class="tag">Redux</span
-            ><span class="tag">Node.js</span>
+            <span class="tag">Claude API</span><span class="tag">Firebase Storage</span><span class="tag">Node.js</span>
           </div>
         </div>
         <div class="tech-card">
           <div class="step-num">3</div>
-          <h3>User System</h3>
-          <p>
-            Firebase Auth for login, MongoDB for user data, team management,
-            profile pages, and achievement badges.
-          </p>
+          <h3>Ride Booking System</h3>
+          <p>Integrate with partner bike-sharing API. Users spend EcoPoints to generate a QR code that unlocks a bicycle at any registered station.</p>
           <div class="tech-tags">
-            <span class="tag">Firebase</span><span class="tag">MongoDB</span
-            ><span class="tag">JWT</span>
+            <span class="tag">QR API</span><span class="tag">Maps SDK</span><span class="tag">Partner API</span>
           </div>
         </div>
         <div class="tech-card">
           <div class="step-num">4</div>
-          <h3>AI Integration</h3>
-          <p>
-            Claude AI for eco action suggestions, smart city growth algorithms,
-            personalized challenges, and chatbot support.
-          </p>
+          <h3>Team & Leaderboard</h3>
+          <p>Real-time team competition with Socket.io. Teams accumulate points collectively — neighborhood vs neighborhood for clean streets.</p>
           <div class="tech-tags">
-            <span class="tag">Claude API</span><span class="tag">OpenAI</span
-            ><span class="tag">Python</span>
+            <span class="tag">Socket.io</span><span class="tag">MongoDB</span><span class="tag">Chart.js</span>
           </div>
         </div>
         <div class="tech-card">
           <div class="step-num">5</div>
-          <h3>Verification System</h3>
-          <p>
-            Photo upload for action proof, AI image recognition to verify eco
-            actions, anti-cheating mechanisms.
-          </p>
+          <h3>Mobile App</h3>
+          <p>React Native app with camera integration for on-the-go photo verification and one-tap ride booking at nearby stations.</p>
           <div class="tech-tags">
-            <span class="tag">Vision AI</span><span class="tag">AWS S3</span
-            ><span class="tag">Moderation</span>
+            <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Camera API</span>
           </div>
         </div>
         <div class="tech-card">
           <div class="step-num">6</div>
-          <h3>Scale & Partners</h3>
-          <p>
-            API for schools and NGOs, analytics dashboard, impact reports,
-            mobile app (React Native), partnership integrations.
-          </p>
+          <h3>City Partnerships</h3>
+          <p>Sign MoUs with local bike-sharing operators and municipal environment agencies. Embed EcoCycle into school curricula and NGO programs.</p>
           <div class="tech-tags">
-            <span class="tag">REST API</span
-            ><span class="tag">React Native</span
-            ><span class="tag">Analytics</span>
+            <span class="tag">B2G</span><span class="tag">NGO</span><span class="tag">Schools</span>
           </div>
         </div>
       </div>
@@ -1884,99 +1447,42 @@
     <div class="sep"></div>
 
     <!-- AI CHATBOT -->
-    <div id="chatbot-section" style="padding: 4rem 0">
-      <div style="max-width: 1060px; margin: 0 auto; padding: 0 2rem">
-        <div id="chatbot-section-inner" class="game-section" style="margin: 0">
-          <div class="section-tag">🤖 AI Assistant</div>
-          <h2>Ask EcoBot</h2>
-          <p
-            style="
-              color: var(--text2);
-              margin-top: 0.25rem;
-              margin-bottom: 1rem;
-            "
-          >
-            Powered by Claude AI — ask anything about EcoCity Builders
-          </p>
+    <div id="chatbot-section">
+      <div class="section-tag" style="margin-bottom: 1.2rem;">🤖 AI Assistant</div>
+      <h2 style="margin-bottom: 0.5rem;">Meet CycleBot</h2>
+      <p style="color: var(--text2); font-size: 0.95rem; margin-bottom: 0.5rem;">Ask anything about EcoCycle — how to earn points, how to book rides, or how to get your team to the top.</p>
 
-          <div class="chat-window" id="chatWindow">
-            <div class="msg bot">
-              👋 Hey! I'm EcoBot, your AI guide to EcoCity Builders. Ask me
-              anything about the platform, how to earn EcoPoints, team
-              strategies, or our roadmap!
-            </div>
-          </div>
+      <div class="chat-window" id="chatWindow">
+        <div class="msg bot">👋 Hey! I'm CycleBot, your EcoCycle assistant. Complete eco-actions like recycling or cleaning up litter to earn EcoPoints — then spend them on free bike rides across the city! What would you like to know?</div>
+      </div>
 
-          <div class="quick-qs">
-            <div
-              class="quick-q"
-              onclick="sendQuick('How do I earn EcoPoints?')"
-            >
-              How do I earn EcoPoints?
-            </div>
-            <div
-              class="quick-q"
-              onclick="sendQuick('How does city building work?')"
-            >
-              How does city building work?
-            </div>
-            <div class="quick-q" onclick="sendQuick('Tell me about the team')">
-              Tell me about the team
-            </div>
-            <div class="quick-q" onclick="sendQuick('What is the roadmap?')">
-              What is the roadmap?
-            </div>
-            <div
-              class="quick-q"
-              onclick="sendQuick('What AI tools do you use?')"
-            >
-              What AI tools do you use?
-            </div>
-          </div>
-
-          <div class="chat-input-row" style="margin-top: 1rem">
-            <input
-              class="chat-input"
-              id="chatInput"
-              type="text"
-              placeholder="Ask EcoBot anything..."
-              onkeydown="if (event.key === 'Enter') sendChat();"
-            />
-            <button class="chat-send" onclick="sendChat()">Send ↗</button>
-          </div>
-        </div>
+      <div class="chat-input-row">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask CycleBot anything..." onkeydown="if(event.key==='Enter') sendChat()" />
+        <button class="chat-send" onclick="sendChat()">Send</button>
+      </div>
+      <div class="quick-qs">
+        <button class="quick-q" onclick="sendQuick('How do I earn EcoPoints?')">How do I earn EcoPoints?</button>
+        <button class="quick-q" onclick="sendQuick('How do I book a bike ride?')">How do I book a ride?</button>
+        <button class="quick-q" onclick="sendQuick('How does photo verification work?')">How does photo verification work?</button>
+        <button class="quick-q" onclick="sendQuick('What is the team leaderboard?')">Team leaderboard?</button>
       </div>
     </div>
 
-    <!-- FOOTER -->
+    <div class="sep"></div>
+
     <footer>
-      <div class="nav-logo" style="font-size: 1.5rem; margin-bottom: 1rem">
-        🌱 EcoCity Builders
-      </div>
-      <p style="color: var(--text3)">
-        Built by WIUT CIFS students — Westminster International University in
-        Tashkent
-      </p>
-      <p style="margin-top: 0.75rem">
-        <a href="demo.html">View Demo Page →</a>
-      </p>
-      <p style="margin-top: 1.5rem; font-size: 0.78rem; color: var(--text3)">
-        © 2026 EcoCity Builders. Deadline: 19 April 2026, 23:59 GMT+5
-      </p>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; color:var(--accent2); margin-bottom:0.75rem;">🚲 EcoCycle</div>
+      <p>WIUT CIFS Foundation Project · Tashkent, Uzbekistan</p>
+      <p style="margin-top:0.5rem;"><a href="demo.html">View Demo →</a> &nbsp;·&nbsp; Deadline: 19 April 2026, 23:59 GMT+5</p>
     </footer>
 
-    <!-- CAMERA MODAL -->
+    <!-- CAMERA OVERLAY -->
     <div class="cam-overlay" id="camOverlay">
       <div class="cam-modal">
-        <button class="cam-close" onclick="closeCamera()">✕</button>
-        <div class="cam-title">📸 Verify Your Action</div>
-        <p class="cam-subtitle">
-          Take or upload a photo as proof — your points will be awarded after
-          submission.
-        </p>
-        <div class="cam-action-badge" id="camActionBadge">
-          ♻️ Recycle Plastic &nbsp;·&nbsp; +15 pts
-        </div>
+        <button class="cam-close" onclick="closeCamera()">×</button>
+        <div class="cam-title">📸 Upload Eco-Action Proof</div>
+        <div class="cam-subtitle">Take or upload a photo to verify your action and claim EcoPoints.</div>
+        <div class="cam-action-badge" id="camActionBadge">♻️ Recycle Plastic · +15 pts</div>
 
         <div class="cam-preview-wrap">
           <video id="camVideo" autoplay playsinline muted></video>
@@ -1989,49 +1495,16 @@
         </div>
 
         <div class="cam-btns">
-          <!-- Mobile: native camera trigger -->
-          <label
-            class="cam-btn open-cam"
-            id="btnMobileCam"
-            style="cursor: pointer; display: none"
-          >
+          <label class="cam-btn open-cam" id="btnMobileCam" style="cursor: pointer; display: none">
             📷 Take Photo
-            <input
-              type="file"
-              accept="image/*"
-              capture="environment"
-              style="display: none"
-              id="mobileCamInput"
-              onchange="handleFileUpload(event)"
-            />
+            <input type="file" accept="image/*" capture="environment" style="display:none" id="mobileCamInput" onchange="handleFileUpload(event)" />
           </label>
-          <!-- Desktop: getUserMedia -->
-          <button
-            class="cam-btn open-cam"
-            id="btnOpenCam"
-            onclick="startCamera()"
-          >
-            📷 Open Camera
-          </button>
-          <button
-            class="cam-btn capture"
-            id="btnCapture"
-            onclick="capturePhoto()"
-          >
-            ⚡ Take Photo
-          </button>
-          <button class="cam-btn retake" id="btnRetake" onclick="retakePhoto()">
-            ↩ Retake
-          </button>
+          <button class="cam-btn open-cam" id="btnOpenCam" onclick="startCamera()">📷 Open Camera</button>
+          <button class="cam-btn capture" id="btnCapture" onclick="capturePhoto()">⚡ Take Photo</button>
+          <button class="cam-btn retake" id="btnRetake" onclick="retakePhoto()">↩ Retake</button>
           <label class="cam-btn upload" style="cursor: pointer">
             🖼 Upload Photo
-            <input
-              type="file"
-              accept="image/*"
-              style="display: none"
-              id="photoFileInput"
-              onchange="handleFileUpload(event)"
-            />
+            <input type="file" accept="image/*" style="display:none" id="photoFileInput" onchange="handleFileUpload(event)" />
           </label>
         </div>
 
@@ -2046,95 +1519,89 @@
       <div class="reward-box">
         <div class="reward-emoji" id="rewardEmoji">🎉</div>
         <div class="reward-title">Action Verified!</div>
-        <div
-          style="font-size: 0.9rem; color: var(--text3); margin-bottom: 0.25rem"
-        >
-          You earned
+        <div style="font-size: 0.9rem; color: var(--text3); margin-bottom: 0.25rem">You earned</div>
+        <div class="reward-pts" id="rewardPts">+15</div>
+        <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.5rem">EcoPoints → Ride Credits</div>
+        <div class="reward-msg" id="rewardMsg">Your photo proof has been accepted. Keep earning to unlock your next bike ride! 🚲</div>
+        <button class="reward-close" onclick="closeReward()">🔄 Do It Again!</button>
+      </div>
+    </div>
+
+    <!-- RIDE BOOKING POPUP -->
+    <div class="ride-popup" id="ridePopup">
+      <div class="ride-box">
+        <div style="font-size: 3.5rem; margin-bottom: 0.75rem" id="rideEmoji">🚲</div>
+        <div style="font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; color:var(--accent2); margin-bottom:0.5rem" id="rideTitle">Short City Ride</div>
+        <div style="font-size: 0.9rem; color: var(--text2); margin-bottom: 1.5rem" id="rideDesc">Scan the QR code at any partner station and pedal away — your EcoPoints will be deducted automatically.</div>
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 3rem; letter-spacing: 0.15em; font-family:'Syne',sans-serif; font-weight:800; color: var(--gold)" id="rideCode">ECO-XXXX</div>
+          <div style="font-size: 0.75rem; color: var(--text3); margin-top: 0.25rem">Show this code at any EcoCycle station</div>
         </div>
-        <div class="reward-pts" id="rewardPts">+25</div>
-        <div
-          style="font-size: 0.8rem; color: var(--text3); margin-bottom: 0.5rem"
-        >
-          EcoPoints
-        </div>
-        <div class="reward-msg" id="rewardMsg">
-          Your photo proof has been accepted. Keep up the great eco work! 🌱
-        </div>
-        <button class="reward-close" onclick="closeReward()">
-          🌿 Awesome, keep going!
-        </button>
+        <div style="font-size: 0.8rem; color: var(--text3); margin-bottom: 1.25rem" id="rideCostMsg">Cost: 30 EcoPoints</div>
+        <button class="reward-close" onclick="closeRidePopup()">✅ Got it, let's ride!</button>
       </div>
     </div>
 
     <script>
       // POINTS SYSTEM
       let userPoints = 0;
-      const teamData = [
-        { name: "Team Alpha", pts: 480, color: "#5DB52A" },
-        { name: "Your Team 🌿", pts: 0, color: "#7ED140" },
-        { name: "Green Wave", pts: 320, color: "#1D9E75" },
-        { name: "Earth Squad", pts: 275, color: "#F0C050" },
+
+      const bikeRides = [
+        { pts: 30,  emoji: "🛤️", label: "Short City Ride", desc: "Up to 30 min · Any station", duration: "30 min" },
+        { pts: 60,  emoji: "🌳", label: "Park Loop",         desc: "Up to 1 hour · Park stations", duration: "1 hour" },
+        { pts: 100, emoji: "🏙️", label: "City Explorer",    desc: "Up to 2 hours · All stations", duration: "2 hours" },
+        { pts: 150, emoji: "🌅", label: "Sunset Cruise",    desc: "3 hours · Riverside route", duration: "3 hours" },
+        { pts: 220, emoji: "🗺️", label: "Full Day Pass",    desc: "All day · Unlimited docking", duration: "Full day" },
+        { pts: 350, emoji: "🏕️", label: "Weekend Adventure", desc: "48 hours · Multi-city access", duration: "48 hours" },
       ];
 
-      const cityBuildings = [
-        { pts: 50, emoji: "🌳", label: "Tree" },
-        { pts: 100, emoji: "🌿", label: "Park" },
-        { pts: 150, emoji: "🏡", label: "Green Home" },
-        { pts: 200, emoji: "🏠", label: "Eco Building" },
-        { pts: 250, emoji: "🌻", label: "Sunflower Field" },
-        { pts: 300, emoji: "🚲", label: "Bike Station" },
-        { pts: 350, emoji: "🏛️", label: "City Hall" },
-        { pts: 400, emoji: "🌊", label: "Water Garden" },
-        { pts: 450, emoji: "☀️", label: "Solar Farm" },
-        { pts: 500, emoji: "⚡", label: "Solar Plant" },
-        { pts: 600, emoji: "🏟️", label: "Eco Stadium" },
-        { pts: 700, emoji: "🌐", label: "Global Hub" },
-      ];
-
-      function buildCityGrid() {
-        const grid = document.getElementById("cityGrid");
+      function buildBikeGrid() {
+        const grid = document.getElementById("bikeGrid");
         grid.innerHTML = "";
-        const unlocked = cityBuildings.filter((b) => userPoints >= b.pts);
-        const totalCells = 32;
-        for (let i = 0; i < totalCells; i++) {
-          const cell = document.createElement("div");
-          cell.className = "city-cell";
-          if (i < unlocked.length) {
-            cell.className += " unlocked";
-            cell.textContent = unlocked[i].emoji;
-            cell.title = unlocked[i].label;
-          }
-          grid.appendChild(cell);
-        }
+        bikeRides.forEach(ride => {
+          const card = document.createElement("div");
+          const canAfford = userPoints >= ride.pts;
+          card.className = "bike-card " + (canAfford ? "unlocked" : "locked");
+          card.innerHTML = `
+            <div class="bike-card-icon">${ride.emoji}</div>
+            <h4>${ride.label}</h4>
+            <div class="cost">${canAfford ? '✅ ' : '🔒 '}${ride.pts} pts</div>
+            <div class="lock-label">${ride.desc}</div>
+            ${canAfford ? `<button class="cam-trigger-btn" style="margin-top:0.65rem" onclick="bookRide('${ride.label}','${ride.emoji}','${ride.desc}',${ride.pts})">🚲 Book Ride</button>` : ''}
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      function bookRide(title, emoji, desc, cost) {
+        if (userPoints < cost) return;
+        userPoints -= cost;
+        document.getElementById("pointsNum").textContent = userPoints;
+        document.getElementById("pointsNum").classList.add("pop");
+        setTimeout(() => document.getElementById("pointsNum").classList.remove("pop"), 200);
+
+        // Show ride popup
+        document.getElementById("rideEmoji").textContent = emoji;
+        document.getElementById("rideTitle").textContent = title;
+        document.getElementById("rideDesc").textContent = desc + " — Show this code at any EcoCycle station to unlock your bike.";
+        document.getElementById("rideCostMsg").textContent = "Deducted: " + cost + " EcoPoints";
+        const code = "ECO-" + Math.random().toString(36).substring(2,6).toUpperCase();
+        document.getElementById("rideCode").textContent = code;
+        document.getElementById("ridePopup").classList.add("open");
+
+        buildBikeGrid();
+        updateNextUnlock();
+      }
+
+      function closeRidePopup() {
+        document.getElementById("ridePopup").classList.remove("open");
       }
 
       function updateNextUnlock() {
-        const next = cityBuildings.find((b) => b.pts > userPoints);
+        const next = bikeRides.find(r => r.pts > userPoints);
         const el = document.getElementById("nextUnlock");
-        if (next)
-          el.textContent =
-            next.emoji + " " + next.label + " at " + next.pts + " pts";
-        else el.textContent = "🏆 Maximum city reached!";
-      }
-
-      function buildLeaderboard() {
-        // Update your team pts
-        teamData[1].pts = userPoints;
-        const sorted = [...teamData].sort((a, b) => b.pts - a.pts);
-        const max = sorted[0].pts || 1;
-        const lb = document.getElementById("leaderboard");
-        lb.innerHTML = "";
-        sorted.forEach((t, i) => {
-          const row = document.createElement("div");
-          row.className = "lb-row" + (i === 0 ? " top" : "");
-          row.innerHTML = `
-        <div class="lb-rank ${i === 0 ? "gold" : ""}">${i === 0 ? "🥇" : i + 1}</div>
-        <div class="lb-team">${t.name}</div>
-        <div class="lb-bar"><div class="lb-fill" style="width:${Math.round((t.pts / max) * 100)}%; background:${t.color}"></div></div>
-        <div class="lb-pts">${t.pts}</div>
-      `;
-          lb.appendChild(row);
-        });
+        if (next) el.textContent = next.emoji + " " + next.label + " at " + next.pts + " pts";
+        else el.textContent = "🏆 All rides unlocked — keep earning!";
       }
 
       function addPoints(pts, el) {
@@ -2144,61 +1611,31 @@
         display.classList.add("pop");
         setTimeout(() => display.classList.remove("pop"), 200);
 
-        // Flash action card
         el.style.borderColor = "var(--accent)";
         el.style.background = "rgba(93,181,42,0.15)";
-        setTimeout(() => {
-          el.style.borderColor = "";
-          el.style.background = "";
-        }, 400);
+        setTimeout(() => { el.style.borderColor = ""; el.style.background = ""; }, 400);
 
-        buildCityGrid();
-        buildLeaderboard();
+        buildBikeGrid();
         updateNextUnlock();
       }
 
       // CHATBOT
       const botKnowledge = {
-        ecopoints:
-          "You earn EcoPoints by completing real-life eco actions: recycling plastic (+15), cleaning your environment (+20), saving water (+10), planting trees (+25), using a bicycle (+12), and more! Each verified action credits your account and your team.",
-        city: "Your EcoCity grows visually as your team earns points! At 50 pts you unlock a 🌳 Tree, 100 pts a 🌿 Park, 200 pts an 🏠 Eco Building, 350 pts a 🏛️ City Hall, and 500 pts a ⚡ Solar Plant. The more you do, the bigger your city!",
-        team: "Our team is built by WIUT CIFS students from Tashkent. We have expertise in web development, AI integration, marketing, and UX research. We're passionate about environmental sustainability and gamification.",
-        roadmap:
-          "We're currently in the Prototype stage (April 2026). Our MVP launches Q3 2026 with React, Firebase Auth, and real team competition. Full public launch with school partnerships is planned for Q4 2026.",
-        ai: "We use Claude AI (Anthropic) for our chatbot, action verification via image recognition, personalized eco challenges, and smart city growth algorithms. We also plan to integrate AI for fraud detection and community moderation.",
-        demo: "Check out our /demo page for a full walkthrough video, system description, and prototype link. You can also play the live prototype right here on the homepage!",
-        default:
-          "Great question! EcoCity Builders is a gamified sustainability platform where real eco actions earn points that build a virtual green city. Teams compete on leaderboards while making real environmental impact. Ask me about earning points, city building, our team, or the roadmap!",
+        ecopoints: "You earn EcoPoints by completing real eco-actions: recycling plastic (+15), cleaning up litter (+20), going plastic-bag free (+10), saving water (+10), planting a seedling (+25), sorting waste (+12), waterway cleanup (+30), and recycling electronics (+20). Upload a photo as proof — our AI verifies it instantly!",
+        rides: "EcoPoints are your ride currency! Spend 30 pts for a Short City Ride, 60 pts for a Park Loop, 100 pts for a City Explorer pass (2 hrs), 150 pts for a Sunset Cruise, 220 pts for a Full Day Pass, or 350 pts for a Weekend Adventure (48 hrs). Once booked, you get a QR code to unlock any partner bike station.",
+        verification: "After you complete an eco-action, click 'Verify with Photo' and take or upload a photo of your action. Our Claude AI vision model analyzes the image and awards your EcoPoints if the action checks out. It's fast, fair, and anti-fraud protected.",
+        team: "Our team is built by WIUT CIFS Foundation students from Tashkent. We have expertise in web development, AI integration, marketing, and UX research — all passionate about cleaner, greener cities.",
+        roadmap: "We're in the Prototype stage (April 2026). MVP launches Q3 2026 with real bike station integration in Tashkent. Full city-wide rollout with school and municipal partnerships is planned for Q4 2026.",
+        default: "Great question! EcoCycle connects real eco-actions to real transportation rewards. Do good — recycle, clean, plant — earn EcoPoints, then spend them on free bike rides across the city. Ask me about earning points, booking rides, photo verification, or our roadmap!",
       };
 
       function getBotResponse(msg) {
         const m = msg.toLowerCase();
-        if (m.includes("point") || m.includes("earn") || m.includes("action"))
-          return botKnowledge.ecopoints;
-        if (m.includes("city") || m.includes("build") || m.includes("unlock"))
-          return botKnowledge.city;
-        if (m.includes("team") || m.includes("who") || m.includes("member"))
-          return botKnowledge.team;
-        if (
-          m.includes("roadmap") ||
-          m.includes("plan") ||
-          m.includes("launch") ||
-          m.includes("mvp")
-        )
-          return botKnowledge.roadmap;
-        if (
-          m.includes("ai") ||
-          m.includes("artificial") ||
-          m.includes("claude") ||
-          m.includes("tool")
-        )
-          return botKnowledge.ai;
-        if (
-          m.includes("demo") ||
-          m.includes("video") ||
-          m.includes("prototype")
-        )
-          return botKnowledge.demo;
+        if (m.includes("earn") || m.includes("point") || m.includes("action") || m.includes("recycle")) return botKnowledge.ecopoints;
+        if (m.includes("ride") || m.includes("bike") || m.includes("book") || m.includes("unlock") || m.includes("spend")) return botKnowledge.rides;
+        if (m.includes("photo") || m.includes("verif") || m.includes("proof") || m.includes("camera")) return botKnowledge.verification;
+        if (m.includes("team") || m.includes("who") || m.includes("member") || m.includes("leaderboard")) return botKnowledge.team;
+        if (m.includes("roadmap") || m.includes("plan") || m.includes("launch") || m.includes("mvp")) return botKnowledge.roadmap;
         return botKnowledge.default;
       }
 
@@ -2219,7 +1656,6 @@
         input.value = "";
         appendMsg(text, "user");
 
-        // Show typing
         const win = document.getElementById("chatWindow");
         const typing = document.createElement("div");
         typing.className = "msg bot typing";
@@ -2227,7 +1663,6 @@
         win.appendChild(typing);
         win.scrollTop = win.scrollHeight;
 
-        // Try Claude API, fallback to local
         try {
           const res = await fetch("https://api.anthropic.com/v1/messages", {
             method: "POST",
@@ -2235,8 +1670,7 @@
             body: JSON.stringify({
               model: "claude-sonnet-4-20250514",
               max_tokens: 300,
-              system:
-                "You are EcoBot, the AI assistant for EcoCity Builders — a gamified environmental platform where users earn EcoPoints for real eco actions (recycling, planting trees, saving water) to build a virtual green city with their team. Keep answers concise (2-3 sentences), friendly, and enthusiastic about sustainability and the platform. If asked about points: recycling=15, cleaning=20, water=10, trees=25. Buildings unlock at 50, 100, 200, 350, 500 points.",
+              system: "You are CycleBot, the AI assistant for EcoCycle — a platform where users earn EcoPoints by completing real eco-actions (recycling=15pts, litter cleanup=20pts, no plastic bags=10pts, save water=10pts, plant seedling=25pts, sort waste=12pts, waterway cleanup=30pts, recycle electronics=20pts). Users spend EcoPoints on real bike rides: Short Ride=30pts (30min), Park Loop=60pts (1hr), City Explorer=100pts (2hr), Sunset Cruise=150pts (3hr), Full Day=220pts, Weekend Adventure=350pts (48hr). Keep answers concise (2-3 sentences), friendly, and enthusiastic about sustainable transport and eco-action.",
               messages: [{ role: "user", content: text }],
             }),
           });
@@ -2259,43 +1693,28 @@
         sendChat();
       }
 
-      // CAMERA / PHOTO VERIFICATION
+      // CAMERA
       let camStream = null;
       let pendingPts = 0;
       let pendingLabel = "";
-      let pendingEmoji = "🌱";
+      let pendingEmoji = "♻️";
       let pendingCard = null;
       let photoReady = false;
-
-      // Detect mobile device
-      const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(
-        navigator.userAgent,
-      );
+      const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 
       function openCamera(pts, label, emoji, card) {
-        pendingPts = pts;
-        pendingLabel = label;
-        pendingEmoji = emoji;
-        pendingCard = card;
+        pendingPts = pts; pendingLabel = label; pendingEmoji = emoji; pendingCard = card;
         photoReady = false;
-
-        document.getElementById("camActionBadge").textContent =
-          label + "  ·  +" + pts + " pts";
+        document.getElementById("camActionBadge").textContent = label + "  ·  +" + pts + " pts";
         document.getElementById("camOverlay").classList.add("open");
         resetCameraUI();
-
-        // On mobile: auto-trigger native camera immediately
-        if (isMobile) {
-          document.getElementById("mobileCamInput").click();
-        }
+        if (isMobile) document.getElementById("mobileCamInput").click();
       }
 
       function resetCameraUI() {
-        stopStream();
-        photoReady = false;
+        stopStream(); photoReady = false;
         document.getElementById("camPlaceholder").style.display = "flex";
-        document.getElementById("camPlaceholder").style.flexDirection =
-          "column";
+        document.getElementById("camPlaceholder").style.flexDirection = "column";
         document.getElementById("camPlaceholder").style.alignItems = "center";
         document.getElementById("camVideo").style.display = "none";
         document.getElementById("camCanvas").style.display = "none";
@@ -2306,54 +1725,31 @@
         document.getElementById("camSubmit").classList.remove("visible");
         document.getElementById("photoFileInput").value = "";
         document.getElementById("mobileCamInput").value = "";
-
         if (isMobile) {
-          // Mobile: show native camera button, hide desktop camera button
           document.getElementById("btnMobileCam").style.display = "";
           document.getElementById("btnOpenCam").style.display = "none";
         } else {
-          // Desktop: show getUserMedia button, hide mobile button
           document.getElementById("btnMobileCam").style.display = "none";
           document.getElementById("btnOpenCam").style.display = "";
         }
       }
 
-      function closeCamera() {
-        stopStream();
-        document.getElementById("camOverlay").classList.remove("open");
-        resetCameraUI();
-      }
-
-      function stopStream() {
-        if (camStream) {
-          camStream.getTracks().forEach((t) => t.stop());
-          camStream = null;
-        }
-      }
+      function closeCamera() { stopStream(); document.getElementById("camOverlay").classList.remove("open"); resetCameraUI(); }
+      function stopStream() { if (camStream) { camStream.getTracks().forEach(t => t.stop()); camStream = null; } }
 
       async function startCamera() {
         try {
-          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-            throw new Error("Camera API not supported");
-          }
-
-          camStream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "environment" },
-            audio: false,
-          });
-
+          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("Not supported");
+          camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false });
           const video = document.getElementById("camVideo");
           video.srcObject = camStream;
           video.style.display = "block";
-
           document.getElementById("camPlaceholder").style.display = "none";
           document.getElementById("btnCapture").style.display = "";
           document.getElementById("btnRetake").style.display = "none";
           document.getElementById("camSubmit").classList.remove("visible");
-
           photoReady = false;
         } catch (err) {
-          console.error(err);
           alert("⚠️ Camera not working. Open via HTTPS or use Upload Photo.");
         }
       }
@@ -2364,13 +1760,11 @@
         canvas.width = video.videoWidth || 640;
         canvas.height = video.videoHeight || 480;
         canvas.getContext("2d").drawImage(video, 0, 0);
-
         const img = document.getElementById("photoPreviewImg");
         img.src = canvas.toDataURL("image/jpeg", 0.85);
         img.style.display = "block";
         video.style.display = "none";
         stopStream();
-
         document.getElementById("btnCapture").style.display = "none";
         document.getElementById("btnOpenCam").style.display = "none";
         document.getElementById("btnRetake").style.display = "";
@@ -2383,7 +1777,7 @@
         const file = e.target.files[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = function (ev) {
+        reader.onload = function(ev) {
           const img = document.getElementById("photoPreviewImg");
           img.src = ev.target.result;
           img.style.display = "block";
@@ -2399,59 +1793,41 @@
         reader.readAsDataURL(file);
       }
 
-      function retakePhoto() {
-        resetCameraUI();
-      }
+      function retakePhoto() { resetCameraUI(); }
 
       function submitPhotoReward() {
         if (!photoReady) return;
         closeCamera();
-
-        // Show reward popup
         document.getElementById("rewardEmoji").textContent = pendingEmoji;
         document.getElementById("rewardPts").textContent = "+" + pendingPts;
         const msgs = [
-          "Your photo proof has been accepted. Keep up the great eco work! 🌱",
-          "Amazing! Every action counts for our planet. 🌍",
-          "Photo verified! Your city is growing stronger. 🏙️",
-          "Brilliant effort! The planet thanks you. 🌿",
+          "Your photo proof has been accepted. Keep earning to unlock your next bike ride! 🚲",
+          "Amazing! Your eco-action is helping clean up the city. 🌍",
+          "Verified! You're getting closer to your next free ride. 🚲",
+          "Brilliant! Every action makes our city greener and your rides cheaper. 🌿",
         ];
-        document.getElementById("rewardMsg").textContent =
-          msgs[Math.floor(Math.random() * msgs.length)];
+        document.getElementById("rewardMsg").textContent = msgs[Math.floor(Math.random() * msgs.length)];
         document.getElementById("rewardPopup").classList.add("open");
-
-        // Award points & mark card
         addPoints(pendingPts, pendingCard);
         if (pendingCard) {
           const btn = pendingCard.querySelector(".cam-trigger-btn");
           if (btn) {
-            btn.textContent = "✅ Verified!";
-            btn.style.background = "rgba(93,181,42,0.25)";
+            btn.textContent = "🔄 Do Again";
+            btn.style.background = "rgba(93,181,42,0.18)";
             btn.style.color = "var(--accent2)";
-            btn.disabled = true;
+            btn.disabled = false;
           }
         }
       }
 
-      function closeReward() {
-        document.getElementById("rewardPopup").classList.remove("open");
-      }
+      function closeReward() { document.getElementById("rewardPopup").classList.remove("open"); }
 
-      // Close modal on overlay click
-      document
-        .getElementById("camOverlay")
-        .addEventListener("click", function (e) {
-          if (e.target === this) closeCamera();
-        });
-      document
-        .getElementById("rewardPopup")
-        .addEventListener("click", function (e) {
-          if (e.target === this) closeReward();
-        });
+      document.getElementById("camOverlay").addEventListener("click", function(e) { if (e.target === this) closeCamera(); });
+      document.getElementById("rewardPopup").addEventListener("click", function(e) { if (e.target === this) closeReward(); });
+      document.getElementById("ridePopup").addEventListener("click", function(e) { if (e.target === this) closeRidePopup(); });
 
       // INIT
-      buildCityGrid();
-      buildLeaderboard();
+      buildBikeGrid();
       updateNextUnlock();
     </script>
   </body>
