@@ -144,7 +144,16 @@
 
   <!-- REPLACE THE VIDEO PLACEHOLDER BELOW WITH YOUR ACTUAL VIDEO -->
   <!-- Option A: YouTube embed — replace YOUR_VIDEO_ID -->
-  <iframe class="video-embed" src="https://youtu.be/vLkWCczJnrg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <a href="https://youtu.be/vLkWCczJnrg" target="_blank" style="display:block; text-decoration:none;">
+    <div class="video-placeholder">
+      <img src="https://img.youtube.com/vi/vLkWCczJnrg/maxresdefault.jpg"
+           onerror="this.src='https://img.youtube.com/vi/xbT5y_1vAbQ/hqdefault.jpg'"
+           style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:20px; opacity:0.7;" alt="Demo video">
+      <div class="play-btn">▶</div>
+      <div class="video-label">Watch Demo Video</div>
+      <div class="video-sublabel">Opens on YouTube →</div>
+    </div>
+  </a>
 
   <!-- Option B: Direct video file -->
   <!-- <video class="video-embed" controls poster="thumbnail.jpg"><source src="demo.mp4" type="video/mp4"></video> -->
