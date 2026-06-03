@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EcoCycle — Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #4ade80;
+    --green-dim: #22c55e;
+    --green-dark: #166534;
+    --bg: #0a0f0a;
+    --bg2: #111a11;
+    --bg3: #162116;
+    --card: #0f1a0f;
+    --border: rgba(74,222,128,0.15);
+    --border-strong: rgba(74,222,128,0.35);
+    --text: #e8f5e8;
+    --muted: #7aab7a;
+    --accent: #86efac;
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,15,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.2rem; color: var(--green); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
+    color: #0a0f0a;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(74,222,128,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(74,222,128,0.1);
+    border: 1px solid var(--border-strong);
+    color: var(--green);
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    color: #fff;
+  }
+  .hero h1 em { color: var(--green); font-style: normal; }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green);
+    color: #0a0f0a;
+    padding: 0.75rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid var(--border-strong);
+    color: var(--green);
+    padding: 0.75rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.2s;
+  }
+  .btn-outline:hover { background: rgba(74,222,128,0.08); }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .stat {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    display: block;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  h2 em { color: var(--green); font-style: normal; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; margin-bottom: 3rem; line-height: 1.7; }
+
+  /* PARTNER TYPES */
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .partner-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .partner-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .partner-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .partner-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.2rem; }
+  .card-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .card-features li {
+    font-size: 0.85rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card-features li::before { content: '✓'; color: var(--green); font-weight: 700; }
+  .card-tag {
+    display: inline-block;
+    background: rgba(74,222,128,0.1);
+    border: 1px solid var(--border-strong);
+    color: var(--green);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  /* PACKAGES */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .pkg {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .pkg.featured {
+    border-color: var(--green);
+    background: linear-gradient(135deg, #0f1f0f 0%, #132113 100%);
+    position: relative;
+  }
+  .featured-label {
+    position: absolute;
+    top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--green);
+    color: #0a0f0a;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .pkg-name { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+  .pkg-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .pkg-price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+  .pkg-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.5; }
+  .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; margin-bottom: 1.5rem; }
+  .pkg-features li { font-size: 0.87rem; color: var(--text); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.4; }
+  .pkg-features li::before { content: '→'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+  .pkg-btn {
+    display: block;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .pkg-btn-solid { background: var(--green); color: #0a0f0a; }
+  .pkg-btn-solid:hover { background: var(--accent); }
+  .pkg-btn-ghost { border: 1px solid var(--border-strong); color: var(--green); background: transparent; }
+  .pkg-btn-ghost:hover { background: rgba(74,222,128,0.08); }
+
+  /* HOW IT WORKS */
+  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 20px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green-dim), transparent);
+  }
+  .step { display: flex; gap: 1.5rem; padding: 1.5rem 0; position: relative; }
+  .step-num {
+    width: 40px; height: 40px;
+    background: var(--green);
+    color: #0a0f0a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content h4 { font-weight: 700; color: #fff; margin-bottom: 0.3rem; font-size: 1rem; }
+  .step-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* IMPACT */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .impact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .impact-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+  .impact-card h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: var(--green); font-weight: 700; margin-bottom: 0.3rem; }
+  .impact-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  /* DASHBOARD MOCKUP */
+  .mockup-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .mockup-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mockup-title { font-weight: 700; color: #fff; font-size: 0.95rem; }
+  .mockup-badge { background: rgba(74,222,128,0.15); color: var(--green); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; }
+  .mockup-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .m-stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+  .m-stat-val { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--green); }
+  .m-stat-lbl { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+  .mockup-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .mockup-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+  .mockup-box h5 { font-size: 0.78rem; color: var(--muted); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .action-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
+  .action-row:last-child { border-bottom: none; }
+  .action-name { color: var(--text); }
+  .action-pts { color: var(--green); font-weight: 700; }
+  .bar-wrap { margin-bottom: 0.75rem; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .bar-track { height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--green); border-radius: 3px; }
+
+  /* TESTIMONIAL / QUOTE */
+  .quote-box {
+    background: var(--bg2);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+  }
+  .quote-text { font-size: 1.05rem; color: var(--text); font-style: italic; line-height: 1.7; margin-bottom: 0.75rem; }
+  .quote-attr { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  /* CONTACT FORM */
+  .form-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 0.65rem 0.9rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green); }
+  .form-group select option { background: #111a11; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--green);
+    color: #0a0f0a;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--accent); }
+  .form-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--green); text-decoration: none; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+
+  @media (max-width: 600px) {
+    .mockup-stats { grid-template-columns: repeat(2, 1fr); }
+    .mockup-row { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://ecocityy.netlify.app/" class="nav-logo">🚲 EcoCycle</a>
+  <div class="nav-links">
+    <a href="https://ecocityy.netlify.app/#problem">Problem</a>
+    <a href="https://ecocityy.netlify.app/#game">Earn & Ride</a>
+    <a href="https://ecocityy.netlify.app/#roadmap">Roadmap</a>
+    <a href="partners.html" style="color: var(--green);">Partners</a>
+    <a href="mailto:ecocycle@wiut.uz" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="badge">🤝 For Partners</span>
+  <h1>Your ESG Budget.<br /><em>Real City Impact.</em></h1>
+  <p>Partner with EcoCycle to turn corporate sustainability goals into verifiable community action — cleaner streets, greener commutes, measurable results.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Become a Partner →</a>
+    <a href="#packages" class="btn-outline">View Packages</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div style="padding: 0 2rem 4rem; max-width: 900px; margin: 0 auto;">
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-num">1,840+</span>
+      <span class="stat-label">Eco Actions Completed</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">38K</span>
+      <span class="stat-label">EcoPoints Earned</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">320</span>
+      <span class="stat-label">Bike Rides Unlocked</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Active Teams</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- WHO CAN PARTNER -->
+<section>
+  <span class="section-tag">01 — Partner Types</span>
+  <h2>Who can <em>partner</em> with us?</h2>
+  <p class="section-sub">Three clear partnership tracks — built for companies, bike networks, and public institutions.</p>
+
+  <div class="partner-grid">
+
+    <div class="partner-card">
+      <span class="card-tag">Corporate</span>
+      <span class="card-icon">🏢</span>
+      <h3>Companies & Businesses</h3>
+      <p>Activate your CSR/ESG program by sponsoring employee and community eco-actions. Get a branded presence, real-time reporting, and certified impact data.</p>
+      <ul class="card-features">
+        <li>Branded team challenges for employees</li>
+        <li>ESG impact report (monthly PDF)</li>
+        <li>Logo on leaderboard & city map</li>
+        <li>Priority station placement near office</li>
+      </ul>
+    </div>
+
+    <div class="partner-card">
+      <span class="card-tag">Mobility</span>
+      <span class="card-icon">🚲</span>
+      <h3>Bike-Sharing Operators</h3>
+      <p>We send you activated, motivated riders. EcoCycle users arrive ready to ride — you get new customers at near-zero acquisition cost.</p>
+      <ul class="card-features">
+        <li>QR-integrated ride unlock (your bikes)</li>
+        <li>Revenue share per EcoCycle-driven ride</li>
+        <li>Real-time station demand heatmap</li>
+        <li>Joint marketing opportunities</li>
+      </ul>
+    </div>
+
+    <div class="partner-card">
+      <span class="card-tag">Public Sector</span>
+      <span class="card-icon">🏛️</span>
+      <h3>Municipalities & NGOs</h3>
+      <p>Run city-wide clean-up programs, track environmental KPIs, and engage citizens — all through EcoCycle's verified action platform.</p>
+      <ul class="card-features">
+        <li>Neighborhood-level impact dashboard</li>
+        <li>School and community onboarding</li>
+        <li>Custom eco-action categories</li>
+        <li>MoU-based partnership structure</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PACKAGES -->
+<section id="packages">
+  <span class="section-tag">02 — Pricing</span>
+  <h2>Partner <em>Packages</em></h2>
+  <p class="section-sub">Transparent pricing designed for startups, SMEs, and large organizations alike. All packages include setup support.</p>
+
+  <div class="packages-grid">
+
+    <div class="pkg">
+      <p class="pkg-name">Starter</p>
+      <p class="pkg-price">Free <span>/ 3 months pilot</span></p>
+      <p class="pkg-desc">Perfect for early adopters willing to co-develop EcoCycle with us. Limited spots.</p>
+      <ul class="pkg-features">
+        <li>Up to 50 users on your branded team</li>
+        <li>Basic monthly impact report</li>
+        <li>Logo on leaderboard</li>
+        <li>Email support</li>
+      </ul>
+      <a href="#contact" class="pkg-btn pkg-btn-ghost">Apply for Pilot</a>
+    </div>
+
+    <div class="pkg featured">
+      <span class="featured-label">⭐ Most Popular</span>
+      <p class="pkg-name">Growth</p>
+      <p class="pkg-price">$299 <span>/ month</span></p>
+      <p class="pkg-desc">For companies with active CSR programs and 50–500 employees.</p>
+      <ul class="pkg-features">
+        <li>Up to 500 users across teams</li>
+        <li>Full ESG impact report (PDF + data export)</li>
+        <li>Branded challenges & custom actions</li>
+        <li>Priority bike station placement</li>
+        <li>Dedicated partner dashboard</li>
+        <li>Slack / WhatsApp support</li>
+      </ul>
+      <a href="#contact" class="pkg-btn pkg-btn-solid">Get Started →</a>
+    </div>
+
+    <div class="pkg">
+      <p class="pkg-name">Enterprise</p>
+      <p class="pkg-price">Custom</p>
+      <p class="pkg-desc">Municipalities, NGOs, or large organizations with 500+ participants.</p>
+      <ul class="pkg-features">
+        <li>Unlimited users</li>
+        <li>Custom eco-action categories</li>
+        <li>API access + data integration</li>
+        <li>White-label option available</li>
+        <li>On-site onboarding & training</li>
+        <li>Dedicated account manager</li>
+      </ul>
+      <a href="#contact" class="pkg-btn pkg-btn-ghost">Contact Us</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PARTNER DASHBOARD PREVIEW -->
+<section>
+  <span class="section-tag">03 — What You Get</span>
+  <h2>Your <em>Partner Dashboard</em></h2>
+  <p class="section-sub">A real-time window into your team's environmental impact. See actions, points, rides, and CO₂ savings — all in one place.</p>
+
+  <div class="mockup-wrap">
+    <div class="mockup-header">
+      <span class="mockup-title">🏢 Kings Academy — Partner Dashboard</span>
+      <span class="mockup-badge">● LIVE</span>
+    </div>
+
+    <div class="mockup-stats">
+      <div class="m-stat">
+        <div class="m-stat-val">284</div>
+        <div class="m-stat-lbl">Active Users</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val">4,120</div>
+        <div class="m-stat-lbl">Eco Actions</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val">61</div>
+        <div class="m-stat-lbl">Rides Unlocked</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val">183 kg</div>
+        <div class="m-stat-lbl">CO₂ Saved</div>
+      </div>
+    </div>
+
+    <div class="mockup-row">
+      <div class="mockup-box">
+        <h5>Top Actions This Month</h5>
+        <div class="action-row"><span class="action-name">♻️ Recycle Plastic</span><span class="action-pts">+15 pts</span></div>
+        <div class="action-row"><span class="action-name">🧹 Clean Up Litter</span><span class="action-pts">+20 pts</span></div>
+        <div class="action-row"><span class="action-name">🌿 Plant Seedling</span><span class="action-pts">+25 pts</span></div>
+        <div class="action-row"><span class="action-name">💧 Save Water</span><span class="action-pts">+10 pts</span></div>
+      </div>
+      <div class="mockup-box">
+        <h5>Team Participation</h5>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Team Alpha</span><span>92%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Team Beta</span><span>74%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:74%"></div></div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Team Gamma</span><span>55%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-label"><span>Team Delta</span><span>38%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- HOW IT WORKS -->
+<section>
+  <span class="section-tag">04 — Process</span>
+  <h2>How <em>partnership</em> works</h2>
+  <p class="section-sub">From first contact to measurable impact in under 2 weeks.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Apply & Choose a Package</h4>
+        <p>Fill out the partner form below. We'll schedule a 30-minute call to understand your goals and match you with the right tier.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Onboarding & Branding Setup</h4>
+        <p>We set up your branded team space, add your logo to the leaderboard, and configure any custom eco-action categories you need.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Launch & Activate Your Team</h4>
+        <p>Share a partner invite link with your employees or community. They join your team, start completing verified eco-actions, and earn EcoPoints for real bike rides.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Track Impact in Real Time</h4>
+        <p>Your dashboard shows live participation, eco-action counts, rides unlocked, and CO₂ offset estimates — all exportable for ESG reporting.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Monthly Impact Report</h4>
+        <p>Receive a branded PDF impact report every month — shareable with stakeholders, investors, or regulatory bodies as proof of ESG commitment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- IMPACT -->
+<section>
+  <span class="section-tag">05 — Why It Matters</span>
+  <h2>The <em>impact</em> you create</h2>
+  <p class="section-sub">Every partnership dollar translates into real, measurable environmental and community outcomes.</p>
+
+  <div class="impact-grid">
+    <div class="impact-card">
+      <span class="impact-icon">♻️</span>
+      <h4>Waste Reduction</h4>
+      <p>Verified recycling and litter clean-up actions with AI photo proof — trackable per partner.</p>
+    </div>
+    <div class="impact-card">
+      <span class="impact-icon">🚲</span>
+      <h4>Car Trips Avoided</h4>
+      <p>Each unlocked bike ride replaces a car trip, reducing urban emissions in Tashkent.</p>
+    </div>
+    <div class="impact-card">
+      <span class="impact-icon">🌿</span>
+      <h4>Green Spaces</h4>
+      <p>Seedling planting and waterway clean-up actions contribute to biodiversity goals.</p>
+    </div>
+    <div class="impact-card">
+      <span class="impact-icon">📊</span>
+      <h4>ESG Reporting</h4>
+      <p>Exportable data for SDG 11, 13, and 15 compliance — ready for investor and board decks.</p>
+    </div>
+  </div>
+
+  <div class="quote-box" style="margin-top: 3rem;">
+    <p class="quote-text">"EcoCycle gives us something no other CSR tool does — a direct line between our budget and visible, verified change in the streets around our office. And our team actually loves it."</p>
+    <p class="quote-attr">— Future Corporate Partner · Tashkent, Uzbekistan</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONTACT FORM -->
+<section id="contact">
+  <span class="section-tag">06 — Get Started</span>
+  <h2>Become a <em>Partner</em></h2>
+  <p class="section-sub" style="margin: 0 auto 2.5rem;">Fill out the form and we'll get back to you within 24 hours.</p>
+
+  <div class="form-wrap">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Ahmad" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Karimov" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Organization Name</label>
+      <input type="text" placeholder="Your Company / NGO / Municipality" />
+    </div>
+    <div class="form-group">
+      <label>Work Email</label>
+      <input type="email" placeholder="you@organization.uz" />
+    </div>
+    <div class="form-group">
+      <label>Partner Type</label>
+      <select>
+        <option value="">Select your category…</option>
+        <option>Corporate / Business (CSR / ESG)</option>
+        <option>Bike-Sharing Operator</option>
+        <option>Municipality / Government</option>
+        <option>NGO / Non-Profit</option>
+        <option>School / University</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Package Interest</label>
+      <select>
+        <option value="">Select a package…</option>
+        <option>Starter (Free Pilot)</option>
+        <option>Growth ($299/month)</option>
+        <option>Enterprise (Custom)</option>
+        <option>Not sure yet — let's talk</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tell us about your goals (optional)</label>
+      <textarea placeholder="What are you hoping to achieve with EcoCycle? How many people would you like to engage?"></textarea>
+    </div>
+    <button class="form-submit" onclick="handleSubmit(this)">Send Partnership Request →</button>
+    <p class="form-note">🔒 We respect your privacy. No spam, ever. We'll only use this to follow up on your request.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>🚲 <strong>EcoCycle</strong> — WIUT CIFS Foundation Project · Tashkent, Uzbekistan</p>
+  <p style="margin-top: 0.5rem;"><a href="https://ecocityy.netlify.app/">← Back to Main Site</a> · <a href="https://ecocityy.netlify.app/demo">View Demo →</a></p>
+</footer>
+
+<script>
+function handleSubmit(btn) {
+  btn.textContent = '✅ Request Sent! We\'ll be in touch soon.';
+  btn.style.background = '#166534';
+  btn.style.color = '#86efac';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
